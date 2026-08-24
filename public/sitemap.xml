@@ -1,15 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
-	<url>
-		<loc>https://uwingroup.ru/aqua</loc>
-		<lastmod>2026-06-25T13:29:29+00:00</lastmod>
-	</url>
-	<url>
-		<loc>https://uwingroup.ru/page203263909.html</loc>
-		<lastmod>2026-08-24T07:03:04+00:00</lastmod>
-	</url>
-	<url>
-		<loc>https://uwingroup.ru/page203266409.html</loc>
-		<lastmod>2026-08-24T07:04:46+00:00</lastmod>
-	</url>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://ivashkov2022-droid.github.io/bloomly-grooming-site/</loc>
+    <lastmod>2026-08-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+  </url>
 </urlset>
