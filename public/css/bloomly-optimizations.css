@@ -34,6 +34,15 @@ img {
   background-color: transparent !important;
 }
 
+/* On wide desktop screens the shallow viewport crops the top of the dog's
+   head. A slightly higher crop window keeps the dog lower in the frame while
+   naturally fading to almost no movement on taller laptop viewports. */
+@media screen and (min-width: 960px) {
+  #rec3264804501 [data-original*="tild3364-3030-4631-b665-393638643235__frame_29_upscayl_3x_.jpg"] {
+    background-position: 50% 40% !important;
+  }
+}
+
 /* Social profiles were placeholders in the template, so keep them out of the
    interface until real Bloomly accounts are supplied. */
 #rec3264806801 .tn-elem[data-elem-id="175784480552113330"],

@@ -30,7 +30,7 @@ const headAdditions = `
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600&amp;display=swap">
 <link rel="preload" as="image" href="images/tild6230-6433-4566-a563-313638343732__image_14.jpg" fetchpriority="high">
-<link rel="stylesheet" href="css/bloomly-optimizations.css?v=video-faststart-1">
+<link rel="stylesheet" href="css/bloomly-optimizations.css?v=desktop-dog-1">
 <script type="application/ld+json">${JSON.stringify({
   '@context': 'https://schema.org',
   '@type': 'LocalBusiness',
@@ -70,9 +70,9 @@ function prepareHtml(source) {
       '<img loading="eager" decoding="async" fetchpriority="high"$1',
     )
     .replace(/<meta property="og:image" content="[^"]*"\s*\/?>/i, '')
-    .replace(/data-mp4video="(images\/[^"]+\.mp4)"/g, 'data-mp4video="$1?v=video-faststart-1"')
+    .replace(/data-mp4video="(images\/[^"]+\.mp4)"/g, 'data-mp4video="$1?v=desktop-dog-1"')
     .replace('</head>', `${headAdditions}</head>`)
-    .replace('</body>', '<script src="js/bloomly-optimizations.js?v=video-faststart-1" defer></script></body>');
+    .replace('</body>', '<script src="js/bloomly-optimizations.js?v=desktop-dog-1" defer></script></body>');
 }
 
 await rm(outputDir, { recursive: true, force: true });
