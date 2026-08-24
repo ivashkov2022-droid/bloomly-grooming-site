@@ -1,0 +1,34 @@
+/* Final mobile and loading polish for the exported Tilda page. */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  overflow-x: clip;
+}
+
+img {
+  content-visibility: auto;
+}
+
+@media screen and (max-width: 479px) {
+  /* Keep the gallery title inside the mobile grid at 320–479 px. */
+  #rec3264806901 .tn-elem[data-elem-id="175776585784989320"] .tn-atom {
+    font-size: 44px !important;
+    line-height: 0.92 !important;
+    letter-spacing: -1.2px !important;
+  }
+}
+
+@media screen and (max-width: 359px) {
+  #rec3264806901 .tn-elem[data-elem-id="175776585784989320"] .tn-atom {
+    font-size: 41px !important;
+    letter-spacing: -1px !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
