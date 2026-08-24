@@ -4,10 +4,31 @@ export const dynamic = 'force-static';
 
 const pageUrl = 'https://ivashkov2022-droid.github.io/bloomly-grooming-site/';
 const previewUrl = `${pageUrl}og.jpg`;
+const faviconMarkup = `<!--favicons-->
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="alternate icon" href="favicon.svg">
+<!--/favicons-->`;
 
 const optimizedPage = bloomlyPage
   .replaceAll('https://bloomly-pet-care.ivv2.chatgpt.site/', pageUrl)
   .replaceAll('href="/"', 'href="./"')
+  .replace(/href=["']\/privacy["']/gi, 'href="privacy/"')
+  .replaceAll('href=&quot;/privacy&quot;', 'href=&quot;privacy/&quot;')
+  .replaceAll('tel:+1234567890', '#form')
+  .replaceAll('mailto:hello@bloomly.com', '#form')
+  .replaceAll('+1 (234) 567-890', 'Открыть форму')
+  .replaceAll('hello@bloomly.com', 'Написать нам')
+  .replaceAll('ул. Питомцев, 123', 'По предварительной записи')
+  .replaceAll('Режим работы: Пн–Сб, 9:00–19:00', 'Ежедневно — время согласуем заранее')
+  .replace(/>АДРЕС</g, '>ФОРМАТ<')
+  .replace(/>ТЕЛЕФОН</g, '>ЗАПИСЬ<')
+  .replace(/>ПОЧТА</g, '>ВОПРОСЫ<')
+  .replace(
+    /<a href=["']\.\/["']\s*style=["']color: inherit["']>Политика конфиденциальности<\/a>/gi,
+    '<a href="privacy/" style="color: inherit">Политика конфиденциальности</a>',
+  )
+  .replace(/<!--favicons-->[\s\S]*?<!--\/favicons-->/i, faviconMarkup)
+  .replace(/<meta name="google-site-verification"[^>]*>/gi, '')
   .replace(/<link[^>]+fonts\.googleapis\.com\/css2[^>]+>/gi, '')
   .replace(/<link rel="preconnect" href="https:\/\/fonts\.gstatic\.com">/gi, '')
   .replace(/<img(?![^>]*\bloading=)/g, '<img loading="lazy" decoding="async"')

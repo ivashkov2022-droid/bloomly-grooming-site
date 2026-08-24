@@ -6,6 +6,7 @@ import { fileURLToPath } from 'node:url';
 const projectRoot = join(dirname(fileURLToPath(import.meta.url)), '..');
 const outputDir = join(projectRoot, '_site');
 const html = readFileSync(join(outputDir, 'index.html'), 'utf8');
+const privacyPage = join(outputDir, 'privacy', 'index.html');
 
 const references = [...html.matchAll(/(?:src|href|data-original|data-mp4video)=["']([^"'#?]+)(?:\?[^"']*)?["']/g)]
   .map((match) => match[1])
@@ -36,6 +37,17 @@ const report = {
   hasOptimizationStyles: html.includes('bloomly-optimizations.css'),
   hasOptimizationScript: html.includes('bloomly-optimizations.js'),
   hasStructuredData: html.includes('application/ld+json'),
+  hasPrivacyPage: existsSync(privacyPage),
+  hasPawFavicon:
+    html.includes('href="favicon.svg"') &&
+    existsSync(join(outputDir, 'favicon.svg')),
+  hasTemplateContacts:
+    html.includes('+1 (234) 567-890') ||
+    html.includes('hello@bloomly.com') ||
+    html.includes('ул. Питомцев, 123'),
+  hasLegacyFavicons:
+    html.includes('tild3061-3438-4434-b063-623266646632') ||
+    html.includes('tild3161-3066-4637-a166-613437393438'),
   hasOldHost:
     html.includes('uwingroup.ru') ||
     html.includes('bloomly-pet-care.ivv2.chatgpt.site'),
@@ -43,6 +55,13 @@ const report = {
 
 console.log(JSON.stringify(report, null, 2));
 
-if (missing.length || report.hasOldHost) {
+if (
+  missing.length ||
+  report.hasOldHost ||
+  !report.hasPrivacyPage ||
+  !report.hasPawFavicon ||
+  report.hasTemplateContacts ||
+  report.hasLegacyFavicons
+) {
   process.exitCode = 1;
 }

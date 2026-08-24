@@ -1,19 +1,15 @@
 (function () {
   'use strict';
 
-  var sectionNames = {
-    services: ['Услуги'],
-    about: ['О нас', 'Почему Bloomly'],
-    offers: ['Акции', 'Предложения'],
-    reviews: ['Отзывы'],
-    gallery: ['Пространство для комфорта'],
-    faq: ['FAQ', 'Частые вопросы'],
-    contact: ['Контакты'],
+  var sectionRecords = {
+    services: 'rec3264806601',
+    about: 'rec3264805201',
+    offers: 'rec3264805401',
+    reviews: 'rec3264807101',
+    gallery: 'rec3264806901',
+    faq: 'rec3264806501',
+    contact: 'rec3264805801',
   };
-
-  function normalize(value) {
-    return (value || '').replace(/\s+/g, ' ').trim().toLowerCase();
-  }
 
   function addRecordAnchor(record, id) {
     if (!record || document.getElementById(id)) return;
@@ -27,26 +23,9 @@
   }
 
   function installSectionAnchors() {
-    Object.keys(sectionNames).forEach(function (id) {
-      if (document.getElementById(id)) return;
-
-      var expected = sectionNames[id].map(normalize);
-      var nodes = document.querySelectorAll('.tn-atom');
-
-      for (var index = 0; index < nodes.length; index += 1) {
-        var text = normalize(nodes[index].textContent);
-        if (!expected.some(function (label) { return text === label || text.indexOf(label) === 0; })) continue;
-
-        var record = nodes[index].closest('.t-rec');
-        if (record) {
-          addRecordAnchor(record, id);
-          break;
-        }
-      }
+    Object.keys(sectionRecords).forEach(function (id) {
+      addRecordAnchor(document.getElementById(sectionRecords[id]), id);
     });
-
-    var form = document.querySelector('form');
-    addRecordAnchor(form && form.closest('.t-rec'), 'form');
   }
 
   function tuneImages() {
@@ -93,10 +72,20 @@
     observer.observe(document.body, { childList: true, subtree: true });
   }
 
+  function activatePrivacyLinks() {
+    document.querySelectorAll('a[href="privacy/"]').forEach(function (link) {
+      link.addEventListener('click', function (event) {
+        event.preventDefault();
+        window.location.assign(new URL('privacy/', document.baseURI).href);
+      });
+    });
+  }
+
   function init() {
     installSectionAnchors();
     tuneImages();
     tuneVideos();
+    activatePrivacyLinks();
   }
 
   if (document.readyState === 'loading') {

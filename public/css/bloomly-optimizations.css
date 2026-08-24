@@ -11,6 +11,14 @@ img {
   content-visibility: auto;
 }
 
+/* Social profiles were placeholders in the template, so keep them out of the
+   interface until real Bloomly accounts are supplied. */
+#rec3264806801 .tn-elem[data-elem-id="175784480552113330"],
+#rec3264806801 .tn-elem[data-elem-id="175784479953620470"],
+#rec3264806801 .tn-elem[data-elem-id="175784678333343340"] {
+  display: none !important;
+}
+
 @media screen and (max-width: 479px) {
   /* Keep the gallery title inside the mobile grid at 320–479 px. */
   #rec3264806901 .tn-elem[data-elem-id="175776585784989320"] .tn-atom {
