@@ -13,7 +13,7 @@ export const metadata: Metadata = {
     description:
       'Бережный груминг для собак и кошек: купание, стрижка, уход за лапами и онлайн-запись в студию Bloomly.',
     images: [
-      'https://ivashkov2022-droid.github.io/bloomly-grooming-site/og.png',
+      'https://ivashkov2022-droid.github.io/bloomly-grooming-site/og.jpg',
     ],
   },
   twitter: {
@@ -22,7 +22,7 @@ export const metadata: Metadata = {
     description:
       'Бережный груминг для собак и кошек: купание, стрижка, уход за лапами и онлайн-запись в студию Bloomly.',
     images: [
-      'https://ivashkov2022-droid.github.io/bloomly-grooming-site/og.png',
+      'https://ivashkov2022-droid.github.io/bloomly-grooming-site/og.jpg',
     ],
   },
 };
