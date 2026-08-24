@@ -1,0 +1,47 @@
+name: Publish Bloomly to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: github-pages
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Prepare the static site for the account-owned URL
+        run: |
+          mkdir -p _site
+          cp reference/page203266409.html _site/index.html
+          cp -R public/. _site/
+          sed -i 's#https://bloomly-pet-care\.ivv2\.chatgpt\.site/#https://ivashkov2022-droid.github.io/bloomly-grooming-site/#g' _site/index.html
+          sed -i 's#href="/"#href="./"#g' _site/index.html _site/files/page203266409body.html
+          touch _site/.nojekyll
+
+      - name: Configure GitHub Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload the site
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: _site
+
+      - name: Deploy
+        id: deployment
+        uses: actions/deploy-pages@v4
