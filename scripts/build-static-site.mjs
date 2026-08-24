@@ -30,7 +30,7 @@ const headAdditions = `
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Infant:wght@500;600&amp;family=Golos+Text:wght@400;500&amp;family=Manrope:wght@300&amp;family=Nunito:wght@400;500;600&amp;family=TikTok+Sans:opsz,wght@12..36,300..900&amp;display=swap">
 <link rel="preload" as="image" href="images/tild6230-6433-4566-a563-313638343732__image_14.jpg" fetchpriority="high">
-<link rel="stylesheet" href="css/bloomly-optimizations.css">
+<link rel="stylesheet" href="css/bloomly-optimizations.css?v=font-lab-1">
 <script type="application/ld+json">${JSON.stringify({
   '@context': 'https://schema.org',
   '@type': 'LocalBusiness',
@@ -71,7 +71,7 @@ function prepareHtml(source) {
     )
     .replace(/<meta property="og:image" content="[^"]*"\s*\/?>/i, '')
     .replace('</head>', `${headAdditions}</head>`)
-    .replace('</body>', '<script src="js/bloomly-optimizations.js" defer></script></body>');
+    .replace('</body>', '<script src="js/bloomly-optimizations.js?v=font-lab-1" defer></script></body>');
 }
 
 await rm(outputDir, { recursive: true, force: true });
