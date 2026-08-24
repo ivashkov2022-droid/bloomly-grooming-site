@@ -47,14 +47,15 @@ const optimizedPage = bloomlyPage
 <meta name="twitter:image" content="${previewUrl}">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Infant:wght@500;600&amp;family=Golos+Text:wght@400;500&amp;family=Manrope:wght@300&amp;family=Nunito:wght@400;500;600&amp;family=TikTok+Sans:opsz,wght@12..36,300..900&amp;display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600&amp;display=swap">
 <link rel="preload" as="image" href="images/tild6230-6433-4566-a563-313638343732__image_14.jpg" fetchpriority="high">
-<link rel="stylesheet" href="css/bloomly-optimizations.css?v=font-lab-1">
+<link rel="stylesheet" href="css/bloomly-optimizations.css?v=video-faststart-1">
 </head>`,
   )
+  .replace(/data-mp4video="(images\/[^"]+\.mp4)"/g, 'data-mp4video="$1?v=video-faststart-1"')
   .replace(
     '</body>',
-    '<script src="js/bloomly-optimizations.js?v=font-lab-1" defer></script></body>',
+    '<script src="js/bloomly-optimizations.js?v=video-faststart-1" defer></script></body>',
   );
 
 export function GET() {

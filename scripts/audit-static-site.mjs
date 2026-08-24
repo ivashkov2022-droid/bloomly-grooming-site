@@ -7,6 +7,14 @@ const projectRoot = join(dirname(fileURLToPath(import.meta.url)), '..');
 const outputDir = join(projectRoot, '_site');
 const html = readFileSync(join(outputDir, 'index.html'), 'utf8');
 const privacyPage = join(outputDir, 'privacy', 'index.html');
+const videoFiles = [
+  'vide3962-3239-4639-b835-333538633161____2025-11-19__104916.mp4',
+  'vide3665-6135-4435-a635-333838393831__dog2.mp4',
+];
+const videoPosters = [
+  'bloomly-video-bonus-poster.webp',
+  'bloomly-video-gallery-poster.webp',
+];
 
 const references = [...html.matchAll(/(?:src|href|data-original|data-mp4video)=["']([^"'#?]+)(?:\?[^"']*)?["']/g)]
   .map((match) => match[1])
@@ -27,6 +35,13 @@ function directorySize(directory) {
   );
 }
 
+function isFastStartVideo(path) {
+  const contents = readFileSync(path).toString('latin1');
+  const moov = contents.indexOf('moov');
+  const mdat = contents.indexOf('mdat');
+  return moov >= 0 && mdat >= 0 && moov < mdat;
+}
+
 const report = {
   htmlBytes: Buffer.byteLength(html),
   htmlGzipBytes: gzipSync(html).length,
@@ -38,6 +53,8 @@ const report = {
   hasOptimizationScript: html.includes('bloomly-optimizations.js'),
   hasStructuredData: html.includes('application/ld+json'),
   hasPrivacyPage: existsSync(privacyPage),
+  hasVideoPosters: videoPosters.every((name) => existsSync(join(outputDir, 'images', name))),
+  videosFastStart: videoFiles.every((name) => isFastStartVideo(join(outputDir, 'images', name))),
   hasPawFavicon:
     html.includes('href="favicon.svg"') &&
     existsSync(join(outputDir, 'favicon.svg')),
@@ -59,6 +76,8 @@ if (
   missing.length ||
   report.hasOldHost ||
   !report.hasPrivacyPage ||
+  !report.hasVideoPosters ||
+  !report.videosFastStart ||
   !report.hasPawFavicon ||
   report.hasTemplateContacts ||
   report.hasLegacyFavicons
