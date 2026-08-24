@@ -2,6 +2,12 @@
 
 A clean code recreation of the Bloomly pet-grooming landing page exported from Tilda. The implementation is built with React, TypeScript, Vinext, and the OpenAI Sites hosting runtime.
 
+## Live website
+
+https://ivashkov2022-droid.github.io/bloomly-grooming-site/
+
+The public repository and GitHub Pages deployment are owned by the `ivashkov2022-droid` account.
+
 ## Included
 
 - Responsive single-page layout matching the Tilda reference
