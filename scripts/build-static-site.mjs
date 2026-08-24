@@ -28,7 +28,7 @@ const headAdditions = `
 <meta name="twitter:image" content="${previewUrl}">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Infant:wght@500;600&amp;family=Golos+Text:wght@400;500&amp;family=Manrope:wght@300&amp;family=TikTok+Sans:opsz,wght@12..36,300..900&amp;display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Infant:wght@500;600&amp;family=Golos+Text:wght@400;500&amp;family=Manrope:wght@300&amp;family=Nunito:wght@400;500;600&amp;family=TikTok+Sans:opsz,wght@12..36,300..900&amp;display=swap">
 <link rel="preload" as="image" href="images/tild6230-6433-4566-a563-313638343732__image_14.jpg" fetchpriority="high">
 <link rel="stylesheet" href="css/bloomly-optimizations.css">
 <script type="application/ld+json">${JSON.stringify({

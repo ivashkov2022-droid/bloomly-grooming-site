@@ -7,6 +7,220 @@ body {
   overflow-x: clip;
 }
 
+/* The public type lab changes one shared font variable, keeping typography
+   consistent across headings, cards, navigation and forms. */
+body.bloomly-font-preview #allrecords .tn-atom,
+body.bloomly-font-preview #allrecords input,
+body.bloomly-font-preview #allrecords textarea,
+body.bloomly-font-preview #allrecords button {
+  font-family: var(--bloomly-preview-font, 'Golos Text'), sans-serif !important;
+}
+
+.bloomly-font-button {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  z-index: 10020;
+  display: inline-flex;
+  min-height: 48px;
+  align-items: center;
+  gap: 9px;
+  padding: 0 18px;
+  border: 1px solid rgba(31, 30, 34, 0.14);
+  border-radius: 999px;
+  background: #f04b3f;
+  box-shadow: 0 12px 32px rgba(31, 30, 34, 0.2);
+  color: #fff;
+  cursor: pointer;
+  font: 500 14px/1 'Golos Text', sans-serif;
+  letter-spacing: -0.15px;
+  transition: transform 180ms ease, box-shadow 180ms ease;
+}
+
+.bloomly-font-button:hover,
+.bloomly-font-button:focus-visible {
+  box-shadow: 0 15px 38px rgba(31, 30, 34, 0.28);
+  outline: none;
+  transform: translateY(-2px);
+}
+
+.bloomly-font-button__mark {
+  display: grid;
+  width: 28px;
+  height: 28px;
+  place-items: center;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.18);
+  font: 600 14px/1 'Golos Text', sans-serif;
+}
+
+.bloomly-font-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 10030;
+  display: grid;
+  justify-items: end;
+  background: rgba(31, 30, 34, 0.34);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 200ms ease;
+}
+
+.bloomly-font-overlay.is-open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.bloomly-font-panel {
+  width: min(440px, 100%);
+  height: 100%;
+  overflow-y: auto;
+  padding: 26px 24px 30px;
+  background: #f5f5f5;
+  box-shadow: -20px 0 60px rgba(31, 30, 34, 0.18);
+  color: #1f1e22;
+  transform: translateX(100%);
+  transition: transform 240ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.bloomly-font-overlay.is-open .bloomly-font-panel {
+  transform: translateX(0);
+}
+
+.bloomly-font-panel__top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.bloomly-font-panel__eyebrow {
+  margin: 0 0 8px;
+  color: #f04b3f;
+  font: 500 12px/1.2 'Golos Text', sans-serif;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.bloomly-font-panel h2 {
+  margin: 0;
+  font: 500 28px/1.04 'Golos Text', sans-serif;
+  letter-spacing: -1px;
+}
+
+.bloomly-font-close {
+  display: grid;
+  width: 40px;
+  height: 40px;
+  flex: 0 0 auto;
+  place-items: center;
+  border: 1px solid rgba(31, 30, 34, 0.12);
+  border-radius: 50%;
+  background: #fff;
+  color: #1f1e22;
+  cursor: pointer;
+  font: 400 24px/1 'Golos Text', sans-serif;
+}
+
+.bloomly-font-preview-card {
+  margin: 24px 0 18px;
+  padding: 22px;
+  border-radius: 22px;
+  background: #bbb2e9;
+  color: #1f1e22;
+}
+
+.bloomly-font-preview-card strong {
+  display: block;
+  margin-bottom: 12px;
+  font-family: var(--bloomly-preview-font, 'Golos Text'), sans-serif;
+  font-size: clamp(34px, 8vw, 48px);
+  font-weight: 500;
+  letter-spacing: -2px;
+  line-height: 0.96;
+}
+
+.bloomly-font-preview-card span {
+  display: block;
+  max-width: 310px;
+  font-family: var(--bloomly-preview-font, 'Golos Text'), sans-serif;
+  font-size: 14px;
+  line-height: 1.35;
+}
+
+.bloomly-font-options {
+  display: grid;
+  gap: 10px;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+.bloomly-font-option {
+  display: grid;
+  grid-template-columns: 24px 1fr auto;
+  align-items: center;
+  gap: 12px;
+  min-height: 72px;
+  padding: 13px 15px;
+  border: 1px solid rgba(31, 30, 34, 0.12);
+  border-radius: 16px;
+  background: #fff;
+  cursor: pointer;
+  transition: border-color 160ms ease, transform 160ms ease;
+}
+
+.bloomly-font-option:hover {
+  transform: translateY(-1px);
+}
+
+.bloomly-font-option:has(input:checked) {
+  border-color: #f04b3f;
+  box-shadow: 0 0 0 1px #f04b3f inset;
+}
+
+.bloomly-font-option input {
+  width: 18px;
+  height: 18px;
+  margin: 0;
+  accent-color: #f04b3f;
+}
+
+.bloomly-font-option__copy strong,
+.bloomly-font-option__copy span {
+  display: block;
+}
+
+.bloomly-font-option__copy strong {
+  margin-bottom: 4px;
+  font-family: var(--option-font), sans-serif;
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 1.05;
+}
+
+.bloomly-font-option__copy span {
+  color: rgba(31, 30, 34, 0.62);
+  font: 400 12px/1.2 'Golos Text', sans-serif;
+}
+
+.bloomly-font-option__sample {
+  font-family: var(--option-font), sans-serif;
+  font-size: 22px;
+}
+
+.bloomly-font-reset {
+  width: 100%;
+  min-height: 46px;
+  margin-top: 16px;
+  border: 0;
+  border-radius: 13px;
+  background: #1f1e22;
+  color: #fff;
+  cursor: pointer;
+  font: 500 14px/1 'Golos Text', sans-serif;
+}
+
 img {
   content-visibility: auto;
 }
@@ -20,11 +234,49 @@ img {
 }
 
 @media screen and (max-width: 479px) {
+  /* Each service image has its own focal point. A shared 50/50 crop cut the
+     dog and the hands unevenly on narrow screens. */
+  #rec3264804501 [data-original*="tild3364-3030-4631-b665-393638643235__frame_29_upscayl_3x_.jpg"] {
+    background-position: 61% 50% !important;
+  }
+
+  #rec3264804701 [data-original*="tild6532-6463-4331-b733-323365313961__frame_57_1.jpg"] {
+    background-position: 55% 50% !important;
+  }
+
+  #rec3264804901 [data-original*="tild6231-6565-4235-a332-396264626232__frame_58_1.jpg"] {
+    background-position: 51% 50% !important;
+  }
+
   /* Keep the gallery title inside the mobile grid at 320–479 px. */
   #rec3264806901 .tn-elem[data-elem-id="175776585784989320"] .tn-atom {
     font-size: 44px !important;
     line-height: 0.92 !important;
     letter-spacing: -1.2px !important;
+  }
+
+  .bloomly-font-button {
+    right: 12px;
+    bottom: 12px;
+    min-height: 44px;
+    padding: 0 14px 0 10px;
+  }
+
+  .bloomly-font-panel {
+    padding: 20px 16px 24px;
+  }
+
+  .bloomly-font-preview-card {
+    margin-top: 20px;
+    padding: 18px;
+  }
+
+  .bloomly-font-option {
+    grid-template-columns: 22px 1fr;
+  }
+
+  .bloomly-font-option__sample {
+    display: none;
   }
 }
 
@@ -38,5 +290,12 @@ img {
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
+  }
+
+  .bloomly-font-button,
+  .bloomly-font-overlay,
+  .bloomly-font-panel,
+  .bloomly-font-option {
+    transition: none;
   }
 }
