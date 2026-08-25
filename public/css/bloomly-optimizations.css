@@ -15,6 +15,12 @@ body,
   font-family: 'Nunito', Arial, sans-serif !important;
 }
 
+#allrecords h1.tn-atom,
+#allrecords h2.tn-atom,
+#allrecords h3.tn-atom {
+  margin: 0;
+}
+
 img {
   content-visibility: auto;
 }

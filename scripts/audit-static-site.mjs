@@ -51,7 +51,27 @@ const report = {
   missing,
   hasOptimizationStyles: html.includes('bloomly-optimizations.css'),
   hasOptimizationScript: html.includes('bloomly-optimizations.js'),
+  hasCriticalVisibility: html.includes('.t-records{opacity:1!important}'),
+  hasAccessibleNavigationTargets:
+    html.includes('aria-label="Bloomly — на главную"') &&
+    html.includes('aria-label="Открыть меню"') &&
+    html.includes('id="menuopen"') &&
+    html.includes('id="form"'),
   hasStructuredData: html.includes('application/ld+json'),
+  h1Count: (html.match(/<h1\b/g) || []).length,
+  h2Count: (html.match(/<h2\b/g) || []).length,
+  hasCanonical: html.includes(`<link rel="canonical" href="https://ivashkov2022-droid.github.io/bloomly-grooming-site/">`),
+  hasCompleteSocialMetadata:
+    html.includes('property="og:image:alt"') &&
+    html.includes('name="twitter:title"') &&
+    html.includes('name="twitter:description"') &&
+    html.includes('name="twitter:image:alt"'),
+  meaningfulBackgroundLabels: [
+    'Собака в студии груминга Bloomly',
+    'Собака во время бережного спа-ухода',
+    'Профессиональная стрижка питомца',
+    'Аккуратный уход за лапами питомца',
+  ].filter((label) => html.includes(`aria-label="${label}"`)).length,
   hasPrivacyPage: existsSync(privacyPage),
   hasVideoPosters: videoPosters.every((name) => existsSync(join(outputDir, 'images', name))),
   videosFastStart: videoFiles.every((name) => isFastStartVideo(join(outputDir, 'images', name))),
@@ -68,6 +88,11 @@ const report = {
   hasOldHost:
     html.includes('uwingroup.ru') ||
     html.includes('bloomly-pet-care.ivv2.chatgpt.site'),
+  hasLegacyAnalytics:
+    html.includes('94435950') ||
+    html.includes('mc.yandex.ru') ||
+    html.includes('tildastatscript'),
+  hasExternalTildaFallback: html.includes('neo.tildacdn.com'),
 };
 
 console.log(JSON.stringify(report, null, 2));
@@ -75,6 +100,15 @@ console.log(JSON.stringify(report, null, 2));
 if (
   missing.length ||
   report.hasOldHost ||
+  report.h1Count !== 1 ||
+  report.h2Count < 5 ||
+  !report.hasCanonical ||
+  !report.hasCompleteSocialMetadata ||
+  !report.hasCriticalVisibility ||
+  !report.hasAccessibleNavigationTargets ||
+  report.meaningfulBackgroundLabels !== 4 ||
+  report.hasLegacyAnalytics ||
+  report.hasExternalTildaFallback ||
   !report.hasPrivacyPage ||
   !report.hasVideoPosters ||
   !report.videosFastStart ||

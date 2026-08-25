@@ -37,4 +37,6 @@ next-env.d.ts
 /outputs/
 /work/
 /_site/
+/_regru_site/
+/*.zip
 /.tmp-*/

@@ -9,6 +9,7 @@
     "dev": "vinext dev",
     "build": "vinext build",
     "build:static": "node scripts/build-static-site.mjs",
+    "build:regru": "node scripts/build-static-site.mjs && node scripts/build-regru-site.mjs",
     "audit:static": "node scripts/audit-static-site.mjs",
     "start": "vinext start",
     "lint": "eslint . --ignore-pattern dist --ignore-pattern .next"
