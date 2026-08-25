@@ -4,7 +4,7 @@ export const dynamic = 'force-static';
 
 const pageUrl = 'https://ivashkov2022-droid.github.io/bloomly-grooming-site/';
 const previewUrl = `${pageUrl}og.jpg`;
-const assetVersion = 'seo-release-2';
+const assetVersion = 'seo-release-3';
 const semanticHeadings = [
   ['h1', 'Питомец достоин лучшего'],
   ['h2', 'Забота о здоровье, красоте и комфорте вашего питомца'],
@@ -103,6 +103,10 @@ const optimizedPage = enhanceSemanticMarkup(bloomlyPage)
   .replace(
     /<img loading="lazy" decoding="async"([^>]*data-original=['"]images\/tild6633-3666-4461-b465-333633626633__bloomly\.svg)/g,
     '<img loading="eager" decoding="async" fetchpriority="high"$1',
+  )
+  .replace(
+    `<div class='tn-atom t-bgimg' data-original="images/tild6230-6433-4566-a563-313638343732__image_14.jpg"`,
+    `<div class='tn-atom t-bgimg loaded' data-original="images/tild6230-6433-4566-a563-313638343732__image_14.jpg" style="background-image:url('images/tild6230-6433-4566-a563-313638343732__image_14.jpg')"`,
   )
   .replace(/<meta property="og:image" content="[^"]*"\s*\/?>/i, '')
   .replace(/<!-- Stat -->[\s\S]*?(?=<\/body>)/i, '')

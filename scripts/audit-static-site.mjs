@@ -52,6 +52,9 @@ const report = {
   hasOptimizationStyles: html.includes('bloomly-optimizations.css'),
   hasOptimizationScript: html.includes('bloomly-optimizations.js'),
   hasCriticalVisibility: html.includes('.t-records{opacity:1!important}'),
+  hasEagerHeroBackground:
+    html.includes("class='tn-atom t-bgimg loaded'") &&
+    html.includes("background-image:url('images/tild6230-6433-4566-a563-313638343732__image_14.jpg')"),
   hasAccessibleNavigationTargets:
     html.includes('aria-label="Bloomly — на главную"') &&
     html.includes('aria-label="Открыть меню"') &&
@@ -105,6 +108,7 @@ if (
   !report.hasCanonical ||
   !report.hasCompleteSocialMetadata ||
   !report.hasCriticalVisibility ||
+  !report.hasEagerHeroBackground ||
   !report.hasAccessibleNavigationTargets ||
   report.meaningfulBackgroundLabels !== 4 ||
   report.hasLegacyAnalytics ||
