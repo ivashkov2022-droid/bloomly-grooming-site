@@ -101,6 +101,14 @@ const optimizedPage = enhanceSemanticMarkup(bloomlyPage)
   .replace(/<link rel="preconnect" href="https:\/\/fonts\.gstatic\.com">/gi, '')
   .replace(/<img(?![^>]*\bloading=)/g, '<img loading="lazy" decoding="async"')
   .replace(
+    /(<img(?![^>]*\bwidth=)[^>]*data-original=['"]images\/tild6366-3962-4662-b461-306531363434__star_1\.svg['"][^>]*)(\/?>)/g,
+    '$1 width="15" height="14"$2',
+  )
+  .replace(
+    /(<img(?![^>]*\bwidth=)[^>]*data-original=['"]images\/tild6633-3666-4461-b465-333633626633__bloomly\.svg['"][^>]*)(\/?>)/g,
+    '$1 width="96" height="30"$2',
+  )
+  .replace(
     /<img loading="lazy" decoding="async"([^>]*data-original=['"]images\/tild6633-3666-4461-b465-333633626633__bloomly\.svg)/g,
     '<img loading="eager" decoding="async" fetchpriority="high"$1',
   )

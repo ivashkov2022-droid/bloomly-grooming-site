@@ -55,6 +55,9 @@ const report = {
   hasEagerHeroBackground:
     html.includes("class='tn-atom t-bgimg loaded'") &&
     html.includes("background-image:url('images/tild6230-6433-4566-a563-313638343732__image_14.jpg')"),
+  hasSizedCriticalImages:
+    html.includes('width="15" height="14"') &&
+    html.includes('width="96" height="30"'),
   hasAccessibleNavigationTargets:
     html.includes('aria-label="Bloomly — на главную"') &&
     html.includes('aria-label="Открыть меню"') &&
@@ -109,6 +112,7 @@ if (
   !report.hasCompleteSocialMetadata ||
   !report.hasCriticalVisibility ||
   !report.hasEagerHeroBackground ||
+  !report.hasSizedCriticalImages ||
   !report.hasAccessibleNavigationTargets ||
   report.meaningfulBackgroundLabels !== 4 ||
   report.hasLegacyAnalytics ||
