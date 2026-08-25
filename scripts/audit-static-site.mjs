@@ -58,6 +58,11 @@ const report = {
   hasSizedCriticalImages:
     html.includes('width="15" height="14"') &&
     html.includes('width="96" height="30"'),
+  hasSelfHostedFonts:
+    html.includes('fonts/nunito-cyrillic.woff2') &&
+    html.includes('fonts/nunito-latin.woff2') &&
+    !html.includes('fonts.googleapis.com') &&
+    !html.includes('fonts.gstatic.com'),
   hasAccessibleNavigationTargets:
     html.includes('aria-label="Bloomly — на главную"') &&
     html.includes('aria-label="Открыть меню"') &&
@@ -113,6 +118,7 @@ if (
   !report.hasCriticalVisibility ||
   !report.hasEagerHeroBackground ||
   !report.hasSizedCriticalImages ||
+  !report.hasSelfHostedFonts ||
   !report.hasAccessibleNavigationTargets ||
   report.meaningfulBackgroundLabels !== 4 ||
   report.hasLegacyAnalytics ||

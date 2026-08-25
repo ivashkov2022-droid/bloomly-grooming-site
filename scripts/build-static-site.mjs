@@ -8,7 +8,7 @@ const outputDir = join(projectRoot, '_site');
 const publicDir = join(projectRoot, 'public');
 const pageUrl = 'https://ivashkov2022-droid.github.io/bloomly-grooming-site/';
 const previewUrl = `${pageUrl}og.jpg`;
-const assetVersion = 'seo-release-3';
+const assetVersion = 'seo-release-4';
 
 const semanticHeadings = [
   ['h1', 'Питомец достоин лучшего'],
@@ -50,9 +50,12 @@ const headAdditions = `
 <meta name="twitter:description" content="Бережный груминг для собак и кошек: купание, стрижка, уход за лапами и онлайн-запись в студию Bloomly.">
 <meta name="twitter:image" content="${previewUrl}">
 <meta name="twitter:image:alt" content="Bloomly — бережный груминг для счастливых питомцев">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600&amp;display=swap">
+<link rel="preload" href="fonts/nunito-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/nunito-latin.woff2" as="font" type="font/woff2" crossorigin>
+<style id="bloomly-fonts">
+@font-face{font-family:'Nunito';font-style:normal;font-weight:400 600;font-display:block;src:url('fonts/nunito-cyrillic.woff2') format('woff2');unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}
+@font-face{font-family:'Nunito';font-style:normal;font-weight:400 600;font-display:block;src:url('fonts/nunito-latin.woff2') format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+</style>
 <link rel="preload" as="image" href="images/tild6230-6433-4566-a563-313638343732__image_14.jpg" fetchpriority="high">
 <style id="bloomly-critical">.t-records{opacity:1!important}</style>
 <link rel="stylesheet" href="css/bloomly-optimizations.css?v=${assetVersion}">
@@ -185,7 +188,7 @@ function prepareHtml(source) {
 await rm(outputDir, { recursive: true, force: true });
 await mkdir(outputDir, { recursive: true });
 
-for (const directory of ['css', 'images', 'js']) {
+for (const directory of ['css', 'fonts', 'images', 'js']) {
   await cp(join(publicDir, directory), join(outputDir, directory), { recursive: true });
 }
 

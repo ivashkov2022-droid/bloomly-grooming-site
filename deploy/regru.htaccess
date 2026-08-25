@@ -20,6 +20,7 @@ RewriteRule ^ https://bloomly-grooming-7q4m9x2.vazuri.ru%{REQUEST_URI} [R=301,L]
   ExpiresByType image/webp "access plus 1 year"
   ExpiresByType image/svg+xml "access plus 1 year"
   ExpiresByType video/mp4 "access plus 1 year"
+  ExpiresByType font/woff2 "access plus 1 year"
 </IfModule>
 
 <IfModule mod_headers.c>
