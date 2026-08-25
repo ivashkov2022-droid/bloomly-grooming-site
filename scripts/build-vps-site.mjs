@@ -1,10 +1,10 @@
-import { copyFile, cp, readFile, rm, writeFile } from 'node:fs/promises';
+import { cp, readFile, rm, writeFile } from 'node:fs/promises';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const projectRoot = join(dirname(fileURLToPath(import.meta.url)), '..');
 const sourceDir = join(projectRoot, '_site');
-const outputDir = join(projectRoot, '_regru_site');
+const outputDir = join(projectRoot, '_vps_site');
 
 await rm(outputDir, { recursive: true, force: true });
 await cp(sourceDir, outputDir, { recursive: true });
@@ -22,6 +22,5 @@ await writeFile(
   'User-agent: *\nDisallow: /\n',
   'utf8',
 );
-await copyFile(join(projectRoot, 'deploy', 'regru.htaccess'), join(outputDir, '.htaccess'));
 
-console.log(`Reg.ru showcase prepared at ${outputDir}`);
+console.log(`VPS showcase prepared at ${outputDir}`);

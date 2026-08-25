@@ -38,5 +38,6 @@ next-env.d.ts
 /work/
 /_site/
 /_regru_site/
+/_vps_site/
 /*.zip
 /.tmp-*/
