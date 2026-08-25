@@ -8,6 +8,10 @@ https://ivashkov2022-droid.github.io/bloomly-grooming-site/
 
 The public repository and GitHub Pages deployment are owned by the `ivashkov2022-droid` account.
 
+VPS showcase: https://vazuri.ru/bloomly-7q4m9x2/
+
+The Vazuri route is an isolated, non-indexed showcase served by the new VPS. It does not replace or modify the Vazuri website files.
+
 ## Included
 
 - Responsive single-page layout matching the Tilda reference
